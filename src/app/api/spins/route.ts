@@ -18,6 +18,9 @@ export const GET = authGuard(async () => {
         }
       },
       date: true
+    },
+    orderBy: {
+      date: 'desc'
     }
   });
 

@@ -18,7 +18,8 @@ export const GET = authGuard(async (req, user) => {
     select: {
       id: true,
       name: true,
-      books: true
+      books: true,
+      winCount: true
     }
   });
 

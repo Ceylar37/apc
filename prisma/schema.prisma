@@ -21,6 +21,7 @@ model User {
   code              String?  @unique
   books             String[]
   selections        Selection[]
+  winCount          Float
 }
 
 model Selection {

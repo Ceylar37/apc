@@ -24,7 +24,10 @@ export const RandomizeBookButton = () => {
     if (!isRandomizeAllowed) {
       return;
     }
-    const books = [...me!.books, ...users!.flatMap((user) => user.books)];
+    const books = [
+      ...me!.books.map((book) => ({ book, userId: me!.id, winCount: me.winCount })),
+      ...users!.flatMap((user) => user.books.map((book) => ({ book, userId: user.id, winCount: user.winCount })))
+    ];
     const angle = 360 / books.length;
     const index = Math.floor(Math.random() * (books.length - 1));
     const winner = books[index];
@@ -32,7 +35,7 @@ export const RandomizeBookButton = () => {
     setTimeout(() => {
       document.documentElement.style.setProperty('--rotation-deg', `${-720 - angle * (index + 1)}deg`);
     });
-    setCandidateBooks(books);
+    setCandidateBooks(books.map(({ book }) => book));
   };
 
   const close = () => {

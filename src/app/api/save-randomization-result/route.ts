@@ -3,7 +3,7 @@ import prisma from '@/lib/prisma';
 
 export const POST = authGuard(async (req) => {
   const body = await req.json();
-  const { book } = body;
+  const { book, userId } = body;
 
   const users = await prisma.user.findMany({
     select: {
@@ -28,6 +28,16 @@ export const POST = authGuard(async (req) => {
   await prisma.user.updateMany({
     data: {
       books: []
+    }
+  });
+  await prisma.user.update({
+    where: {
+      id: userId
+    },
+    data: {
+      winCount: {
+        increment: 1
+      }
     }
   });
 

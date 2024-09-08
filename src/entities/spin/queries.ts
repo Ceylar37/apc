@@ -4,7 +4,7 @@ import { Spin } from './types';
 
 export const useSaveRandomizationResult = () =>
   useMutation({
-    mutationFn: (book: string) => httpClient.post('/save-randomization-result', { book })
+    mutationFn: (data: { book: string; userId: string }) => httpClient.post('/save-randomization-result', data)
   });
 
 export const useSpins = () =>

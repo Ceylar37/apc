@@ -9,7 +9,8 @@ export const GET = authGuard(async (req, user) => {
     JSON.stringify({
       id: user.id,
       name: user.name,
-      books: user.books
+      books: user.books,
+      winCount: user.winCount
     })
   );
 });

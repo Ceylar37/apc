@@ -12,13 +12,13 @@ export default function History() {
   const { data: spins } = useSpins();
 
   return (
-    <div>
+    <div className='space-y-2'>
       {spins?.map((spin) => (
         <Card key={spin.id}>
           <CardHeader>{format(new Date(spin.date))}</CardHeader>
           <CardContent>
             <Collapsible>
-              <CollapsibleTrigger className='flex items-center gap-2'>
+              <CollapsibleTrigger className='flex items-center gap-2 text-start'>
                 Result: {spin.result}
                 <Button variant='ghost'>
                   <ChevronsUpDown className='h-4 w-4' />
